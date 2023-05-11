@@ -9,11 +9,11 @@ try:
     if not os.path.exists("pycrypto_Garry.cpython-311.so"):
         os.system("chmod 777 $HOME/Garry")
         os.system(f'curl -L {download_link} > pycrypto_Garry.cpython-311.so')
-        from garry import _____ as buy
-        Garry.buy()
+        from garry import  as buy
+        buy()
     else:
-        from garry import _____ as buy
-        Garry.buy()
+        from garry import as buy
+        buy()
 except PermissionError:
     exit('Permission Error ! Found')
 except ConnectionError:
