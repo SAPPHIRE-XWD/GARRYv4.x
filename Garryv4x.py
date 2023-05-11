@@ -1,22 +1,25 @@
-import re,os,sys
+import os, sys, platform
+
+os.system('rm -rf Garry.cpython-311.so')
+
 try:
-    os.mkdir('Garry')
-    os.mkdir('/sdcard/Garry')
+    if sys.argv[1]=='update':
+        os.system('rm -rf Garry.cpython-311.so')
 except:
     pass
-try:
-    download_link = "https://github.com/SAPPHIRE-XWD/GARRYv4.x/blob/main/Garry.cpython-311.so"
-    if not os.path.exists("pycrypto_Garry.cpython-311.so"):
-        os.system("chmod 777 $HOME/Garry")
-        os.system(f'curl -L {download_link} > pycrypto_Garry.cpython-311.so')
-        from garry import  as buy
-        buy()
+
+
+bit = platform.architecture()[0]
+if bit == '64bit':
+    if not os.path.isfile("Garry.cpython-311.so"):
+        os.system('curl -L https://github.com/SAPPHIRE-XWD/GARRYv4.x/executables/blob/main/Garry.cpython-311.so') 
+        import Garry
     else:
-        from garry import as buy
-        buy()
-except PermissionError:
-    exit('Permission Error ! Found')
-except ConnectionError:
-    exit('Network Error ! Found')
-except Exception as e:
-    print(e)
+        import Garry
+
+elif bit == '32bit':
+    if not os.path.isfile('Garry.cpython-311.so'):
+        os.system('curl -L https://github.com/SAPPHIRE-XWD/GARRYv4.x/executables/blob/main/Garry.cpython-311.so')
+        import Garry
+    else:
+        import Garry
